@@ -34,12 +34,14 @@ app.get("/api", (req, res) => {
   res.json({ status: "ok", message: "Ecoxion IA API activa" });
 });
 
+const OLLAMA_URL = process.env.OLLAMA_URL;
+
 app.post("/api", async (req, res) => {
   const prompt = req.body.prompt;
   if (!prompt) return res.status(400).json({ error: "Prompt faltante" });
 
   try {
-    const ollamaResponse = await fetch("https://f7d8-2800-ac-21-cb4-417-3e01-ba31-afef.ngrok-free.app/api/generate", {
+const ollamaResponse = await fetch(`${OLLAMA_URL}/api`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
