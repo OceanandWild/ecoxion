@@ -42,14 +42,19 @@ app.post("/api/generate", async (req, res) => {
 
   try {
 const ollamaResponse = await fetch(`${OLLAMA_URL}/api/generate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: MODEL,
-        prompt: prompt,
-        stream: false
-      })
-    });
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "User-Agent": "EcoxionProxy/1.0",
+    "Bypass-Tunnel-Reminder": "true"
+  },
+  body: JSON.stringify({
+    model: MODEL,
+    prompt: prompt,
+    stream: false
+  })
+});
+
 
     if (!ollamaResponse.ok) {
       const errText = await ollamaResponse.text();
