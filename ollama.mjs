@@ -36,7 +36,7 @@ app.get("/api", (req, res) => {
 
 const OLLAMA_URL = process.env.OLLAMA_URL;
 
-app.post("/api", async (req, res) => {
+app.post("/api/generate", async (req, res) => {
   const prompt = req.body.prompt;
   if (!prompt) return res.status(400).json({ error: "Prompt faltante" });
 
