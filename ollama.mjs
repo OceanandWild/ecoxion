@@ -58,13 +58,21 @@ const ollamaResponse = await fetch(`${OLLAMA_URL}/api/generate`, {
 
 
 if (!ollamaResponse.ok) {
-  const errText = await ollamaResponse.text();
-  console.error("💣 Respuesta NO válida de Ollama:", errText);
+  console.error("💣 Estado del response:", ollamaResponse.status, ollamaResponse.statusText);
+
+  const contentType = ollamaResponse.headers.get("content-type");
+  console.log("🧾 Content-Type de respuesta:", contentType);
+
+  const rawBody = await ollamaResponse.text();
+  console.log("📦 Respuesta cruda:", rawBody);
+
   return res.status(500).json({
     error: "Fallo interno al generar IA",
-    detalle: errText // ¡AQUÍ te muestra el verdadero motivo!
+    status: ollamaResponse.status,
+    text: rawBody
   });
 }
+
 
 
     const data = await ollamaResponse.json();
