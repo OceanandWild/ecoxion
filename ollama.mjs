@@ -71,10 +71,15 @@ const ollamaResponse = await fetch(`${OLLAMA_URL}/api/generate`, {
     console.log("🧠 Respuesta de Ollama:", data);
 res.json({ result: data.response.trim() });
 
-  } catch (err) {
-    console.error("Error conectando con Ollama:", err);
-    res.status(500).json({ error: "Error al conectar con Ollama" });
-  }
+} catch (err) {
+  console.error("Error conectando con Ollama:", err);
+  res.status(500).json({
+    error: "Error al conectar con Ollama",
+    message: err.message,
+    stack: err.stack
+  });
+}
+
 });
 
 app.get("/api/generate", (req, res) => {
