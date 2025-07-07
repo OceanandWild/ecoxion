@@ -41,7 +41,7 @@ app.post("/api/generate", async (req, res) => {
   if (!prompt) return res.status(400).json({ error: "Prompt faltante" });
 
   try {
-const ollamaResponse = await fetch(`${OLLAMA_URL}/api`, {
+const ollamaResponse = await fetch(`${OLLAMA_URL}/api/generate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
