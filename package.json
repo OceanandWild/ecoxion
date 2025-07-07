@@ -1,0 +1,15 @@
+{
+  "name": "ollama-proxy",
+  "version": "1.0.0",
+  "main": "ollama.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node ollama.mjs"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "node-fetch": "^3.3.2"
+  }
+}
