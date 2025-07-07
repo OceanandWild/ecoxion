@@ -56,6 +56,7 @@ const ollamaResponse = await fetch(`${OLLAMA_URL}/api/generate`, {
 });
 
 
+
     if (!ollamaResponse.ok) {
       const errText = await ollamaResponse.text();
       console.error("Respuesta NO válida de Ollama:", errText);
