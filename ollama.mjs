@@ -77,6 +77,11 @@ res.json({ result: data.response.trim() });
   }
 });
 
+app.get("/api/generate", (req, res) => {
+  res.status(405).send("Este endpoint solo acepta POST, campeón 😎");
+});
+
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor IA corriendo en http://localhost:${PORT}`);
